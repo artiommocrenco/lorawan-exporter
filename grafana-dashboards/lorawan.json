@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 2,
+  "id": 8,
   "links": [],
   "panels": [
     {
@@ -49,7 +49,7 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 4,
+        "w": 5,
         "x": 0,
         "y": 0
       },
@@ -78,8 +78,8 @@
             "uid": "a7ee7fd2-ee1a-4400-b169-afa1f8c619ed"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "lorawan_temperature_celsius",
+          "editorMode": "code",
+          "expr": "avg_over_time(lorawan_temperature_celsius[30m])",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": false,
@@ -120,8 +120,8 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 4,
-        "x": 4,
+        "w": 5,
+        "x": 5,
         "y": 0
       },
       "id": 6,
@@ -149,8 +149,8 @@
             "uid": "a7ee7fd2-ee1a-4400-b169-afa1f8c619ed"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "lorawan_humidity_percentage",
+          "editorMode": "code",
+          "expr": "avg_over_time(lorawan_humidity_percentage[30m])",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": false,
@@ -195,8 +195,8 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 4,
-        "x": 8,
+        "w": 5,
+        "x": 10,
         "y": 0
       },
       "id": 4,
@@ -223,8 +223,8 @@
             "uid": "a7ee7fd2-ee1a-4400-b169-afa1f8c619ed"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "lorawan_battery_voltage_volts",
+          "editorMode": "code",
+          "expr": "avg_over_time(lorawan_battery_voltage_volts[30m])",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": false,
@@ -263,8 +263,8 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 4,
-        "x": 12,
+        "w": 5,
+        "x": 15,
         "y": 0
       },
       "id": 5,
@@ -291,8 +291,8 @@
             "uid": "a7ee7fd2-ee1a-4400-b169-afa1f8c619ed"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "lorawan_rssi_decibel_milliwatts",
+          "editorMode": "code",
+          "expr": "avg_over_time(lorawan_rssi_decibel_milliwatts[30m])",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": false,
@@ -332,7 +332,7 @@
       "gridPos": {
         "h": 8,
         "w": 4,
-        "x": 16,
+        "x": 20,
         "y": 0
       },
       "id": 8,
@@ -359,8 +359,8 @@
             "uid": "a7ee7fd2-ee1a-4400-b169-afa1f8c619ed"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "lorawan_snr_decibels",
+          "editorMode": "code",
+          "expr": "avg_over_time(lorawan_snr_decibels[30m])",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": false,
@@ -459,11 +459,12 @@
             "uid": "a7ee7fd2-ee1a-4400-b169-afa1f8c619ed"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
+          "editorMode": "code",
           "expr": "lorawan_temperature_celsius",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": false,
+          "interval": "",
           "legendFormat": "{{name}}",
           "range": true,
           "refId": "A",
@@ -559,12 +560,13 @@
             "uid": "a7ee7fd2-ee1a-4400-b169-afa1f8c619ed"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
+          "editorMode": "code",
           "expr": "lorawan_humidity_percentage",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": false,
-          "legendFormat": "{{name}}",
+          "interval": "",
+          "legendFormat": "__auto",
           "range": true,
           "refId": "A",
           "useBackend": false
@@ -671,6 +673,208 @@
         }
       ],
       "title": "Battery Voltage",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "a7ee7fd2-ee1a-4400-b169-afa1f8c619ed"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": 3600000,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "log": 10,
+              "type": "symlog"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "dBm"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 32
+      },
+      "id": 9,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "a7ee7fd2-ee1a-4400-b169-afa1f8c619ed"
+          },
+          "disableTextWrap": false,
+          "editorMode": "builder",
+          "expr": "lorawan_rssi_decibel_milliwatts",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "{{name}}",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "RSSI",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "a7ee7fd2-ee1a-4400-b169-afa1f8c619ed"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": 3600000,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "log": 10,
+              "type": "symlog"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "dBm"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 40
+      },
+      "id": 10,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "a7ee7fd2-ee1a-4400-b169-afa1f8c619ed"
+          },
+          "disableTextWrap": false,
+          "editorMode": "builder",
+          "expr": "lorawan_snr_decibels",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "{{name}}",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "SNR",
       "type": "timeseries"
     }
   ],
