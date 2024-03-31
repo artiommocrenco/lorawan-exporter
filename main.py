@@ -149,12 +149,19 @@ def on_lht65_payload(event_decoded):
         get_lht65_humidity_percentage(binary_payload), attributes=event_attributes
     )
 
-    if event_decoded["hotspots"][0]:
+    for h in event_decoded["hotspots"]:
+        event_attributes = {
+            "id": event_decoded["id"],
+            "name": event_decoded["name"],
+            "hotspot": h["name"],
+            "spreading": h["spreading"],
+        }
+
         lorawan_rssi_decibel_milliwatts.set(
-            event_decoded["hotspots"][0]["rssi"], attributes=event_attributes
+            h["rssi"], attributes=event_attributes
         )
         lorawan_snr_decibels.set(
-            event_decoded["hotspots"][0]["snr"], attributes=event_attributes
+            h["snr"], attributes=event_attributes
         )
 
 
