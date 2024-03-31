@@ -1,0 +1,57 @@
+version: "3"
+
+#volumes:
+#    prometheus_data:
+#    grafana_data:
+#    redis_data:
+
+services:
+  exporter:
+    build: .
+    restart: unless-stopped
+    environment:
+      - MQTT_ADDRESS=mqtt.meshtastic.org
+      - MQTT_USE_TLS=0
+      - MQTT_PORT=1883
+      - MQTT_KEEPALIVE=15
+#      - MQTT_USERNAME=changeme
+#      - MQTT_PASSWORD=changeme
+      - MQTT_TOPIC=helium/#
+    networks:
+      - lorawan-bridge
+#  prometheus:
+#    image: prom/prometheus:v2.51.1
+#    restart: unless-stopped
+#    extra_hosts:
+#          - "host.docker.internal:host-gateway"
+#    volumes:
+#      - prometheus_data:/prometheus
+#      - ./docker/prometheus.yml:/etc/prometheus/prometheus.yml
+#    networks:
+#      - lorawan-bridge
+#  grafana:
+#    image: grafana/grafana-oss:10.4.1
+#    restart: unless-stopped
+#    volumes:
+#      - grafana_data:/var/lib/grafana
+#      - ./docker/grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+#      - ./docker/grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
+#      - ./grafana-dashboards:/var/lib/grafana/dashboards
+#    ports:
+#      - "127.0.0.1:3000:3000"
+#    networks:
+#      - lorawan-bridge
+  # Redis is being utilised for storing persistent state
+#  redis:
+#    image: redis:7
+#    restart: unless-stopped
+#    ports:
+#      - "127.0.0.1:6379:6379"
+#    volumes:
+#      - redis_data:/data
+#    networks:
+#      - lorawan-bridge
+
+networks:
+  lorawan-bridge:
+    driver: bridge
